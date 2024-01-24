@@ -10,7 +10,8 @@ stdin.on('data', (data) => {
     stdout.write('Good luck!')
     process.exit();
   } else {
-  stream.write(dataString);}
+  //stream.write(dataString);}
+  stream.write(dataString + '\n');}
 })
 process.on('SIGINT', () => {
   stdout.write('Good luck!')

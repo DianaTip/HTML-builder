@@ -9,13 +9,18 @@ const copyFolder = fs.mkdir(path.join(__dirname, 'files-copy'),
       return console.error(err);
     }
   });
-  const files = await fsp.readdir(pathdirname, {withFileTypes:true});
-  files.forEach(async(file) => {
-  fsp.copyFile(file, copyFolder/file, function(error) {
-    if (error) {
-        throw error;
-    }
-});})
+  const files = fs.readdir(pathdirname, {withFileTypes:true});
+  files.forEach((file) => {
+  //fs.copyFile(path.join(pathdirname,file), path.join(copyFolder,file) */
+
+  fs.copyFile(
+    path.join(pathdirname, file),
+    path.join(copyFolder, file),
+    (err) => {
+      if (err) return console.error(err);
+    },
+  );})
+
 
  /* async function mycopyFile (pathdirname) {
     const files = await fsp.readdir(pathdirname, {withFileTypes:true});
